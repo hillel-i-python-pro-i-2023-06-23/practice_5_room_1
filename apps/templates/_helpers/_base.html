@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            {% if title %}
+                {{ title }}
+            {% else %}
+                Welcome!
+            {% endif %}
+            | Ancient©
+        {% endblock %}
+    </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        main {
+            padding-bottom: 45px;
+            flex: 1;
+        }
+
+        .jumbotron h1 {
+            font-size: 36px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="bottomAnim"></div>
+
+{% include "_helpers/_header.html" %}
+
+
+<main>
+    <div class="container">
+        <div>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+</main>
+
+
+<footer>
+    &copy; 2023 Yevhen Yalovenko Django base project. All rights reserved.
+</footer>
+</body>
+</html>
