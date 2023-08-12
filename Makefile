@@ -1,13 +1,13 @@
 
-.PHONY: django-project-run
+.PHONY: d-homework-i-run
 # Make all actions needed for run homework from zero.
-django-project-run:
+d-homework-i-run:
 	@bash ./scripts/d-homework-i-run.sh
 
 
-.PHONY: django-project-purge
+.PHONY: d-homework-i-purge
 # Make all actions needed for purge homework related data.
-django-project-purge:
+d-homework-i-purge:
 	@make d-purge
 
 
@@ -73,3 +73,8 @@ migrations:
 # Migrate
 migrate:
 	@python manage.py migrate
+
+.PHONY: create_admin
+# Create admin
+create_admin:
+	@DJANGO_SUPERUSER_PASSWORD=admin123 python manage.py createsuperuser --user admin --email admin@gmail.com --no-input
