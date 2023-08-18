@@ -24,7 +24,7 @@ class AboutUsView(TemplateView):
 
         context.update(
             about="This is just base project, but we definitely sooner or later became bigger,"
-                  " more comfortable. Just wait=)",
+            " more comfortable. Just wait=)",
             #
             title="About us",
         )

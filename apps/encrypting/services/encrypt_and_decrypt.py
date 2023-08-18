@@ -14,11 +14,13 @@ def generate_rsa_pair_key():
 
 def save_private_key(private_key, filename):
     with open(filename, "wb") as keyfile:
-        keyfile.write(private_key.private_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PrivateFormat.PKCS8,
-            encryption_algorithm=serialization.NoEncryption()
-        ))
+        keyfile.write(
+            private_key.private_bytes(
+                encoding=serialization.Encoding.PEM,
+                format=serialization.PrivateFormat.PKCS8,
+                encryption_algorithm=serialization.NoEncryption(),
+            )
+        )
 
 
 def load_private_key(filename):
@@ -31,10 +33,11 @@ def load_private_key(filename):
 
 def save_public_key(public_key, filename):
     with open(filename, "wb") as keyfile:
-        keyfile.write(public_key.public_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PublicFormat.SubjectPublicKeyInfo
-        ))
+        keyfile.write(
+            public_key.public_bytes(
+                encoding=serialization.Encoding.PEM, format=serialization.PublicFormat.SubjectPublicKeyInfo
+            )
+        )
 
 
 def load_public_key(filename):
@@ -45,11 +48,7 @@ def load_public_key(filename):
 def encrypt_with_public_key(public_key, message):
     encrypted_message = public_key.encrypt(
         message.encode(),
-        padding.OAEP(
-            mgf=padding.MGF1(algorithm=hashes.SHA256()),
-            algorithm=hashes.SHA256(),
-            label=None
-        )
+        padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()), algorithm=hashes.SHA256(), label=None),
     )
     return encrypted_message
 
@@ -57,10 +56,6 @@ def encrypt_with_public_key(public_key, message):
 def decrypt_with_private_key(private_key, encrypted_message):
     decrypted_message = private_key.decrypt(
         encrypted_message,
-        padding.OAEP(
-            mgf=padding.MGF1(algorithm=hashes.SHA256()),
-            algorithm=hashes.SHA256(),
-            label=None
-        )
+        padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()), algorithm=hashes.SHA256(), label=None),
     )
     return decrypted_message.decode()
