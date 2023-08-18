@@ -8,10 +8,11 @@
 
 {% block content %}
     <body>
-        <h1>Зашифроване повідомлення</h1>
-        <p><strong>Тема:</strong> {{ encrypted_message.topic }}</p>
-        <p><strong>Зашифроване повідомлення:</strong> {{ encrypted_message.encrypted_message }}</p>
-        <p><strong>Дата створення:</strong> {{ encrypted_message.created_at }}</p>
-        <p><a href="{% url 'encrypting:decrypt' %}">Перейти до розшифрування</a></p>
+
+    <h1>Зашифроване повідомлення</h1>
+    <p>{{ encrypted_message }}</p>
+    <a href="{% url 'encrypting:encrypt' %}">Зашифрувати ще одне повідомлення</a>
+
+    <p><a href="{% url 'encrypting:decrypt' %}">Перейти до розшифрування</a></p>
     </body>
 {% endblock %}

@@ -26,7 +26,8 @@ def encrypt_message(request):
                 encrypted_message=encrypted_message,
             )
 
-            return render(request, "encrypting/encrypted.html", {"encrypted_message": encrypted_message_obj})
+            encrypted_display_message = str(encrypted_message_obj)
+            return render(request, "encrypting/encrypted.html", {"encrypted_message": encrypted_display_message})
     else:
         form = EncryptForm()
 

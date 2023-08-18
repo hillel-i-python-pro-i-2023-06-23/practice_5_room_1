@@ -32,8 +32,12 @@ class EncryptedMessage(models.Model):
         PrivateKey, on_delete=models.CASCADE, related_name="encrypted_message", null=True
     )
 
+    def __str__(self) -> str:
+        return f"Зашифроване повідомлення {self.topic} створене {self.created_at}"
 
-@staticmethod
+    __repr__ = __str__
+
+
 def create_encrypted_message(topic, message):
     private_key_obj = PrivateKey.generate_and_save_private_key()
     encrypted_message = encrypt_with_public_key(private_key_obj.private_key, message)
