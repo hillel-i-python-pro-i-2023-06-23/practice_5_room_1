@@ -1,0 +1,10 @@
+{% extends "_helpers/_base.html" %}
+
+<div>
+{% block content %}
+
+        <h1> List og Encrypt messages </h1>
+
+    {% include "encrypting/_encrypting_base.html" with encrypting_list=object_list %}
+{% endblock %}
+</div>

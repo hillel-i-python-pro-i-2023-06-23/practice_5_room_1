@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col"></th>
+        <th>PK</th>
+        <th>Topic</th>
+        <th>Message</th>
+        <th>created at</th>
+        <th>modified at</th>
+    </tr>
+    </thead>
+    {% for message in object_list %}
+        <tr>
+            <th scope="row"></th>
+            <td>{{ message.pk }}</td>
+            <td>{{ message.topic }}</td>
+            <td>{{ message.encrypted_message }}</td>
+        </tr>
+    {% endfor %}
+</table>
