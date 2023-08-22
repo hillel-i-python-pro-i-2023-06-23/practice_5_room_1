@@ -1,18 +1,18 @@
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col"></th>
-        <th>Topic</th>
-        <th>Message</th>
-        <th>created at</th>
-        <th>modified at</th>
-    </tr>
-    </thead>
-    {% for message in object_list %}
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
         <tr>
-            <th scope="row"></th>
-            <td>{{ message.topic }}</td>
-            <td>{{ message}}</td>
+            <th scope="col">ID</th>
+            <th scope="col">Зашифроване повідомлення</th>
+            <th scope="col">Дата створення</th>
         </tr>
-    {% endfor %}
+    </thead>
+    <tbody>
+        {% for message in object_list %}
+        <tr>
+            <td>{{ message.id }}</td>
+            <td>{{ message }}</td>
+            <td>{{ message.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>

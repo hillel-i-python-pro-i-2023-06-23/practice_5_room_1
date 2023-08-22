@@ -8,27 +8,14 @@ def generate_rsa_pair_key():
         key_size=2048,
     )
     public_key = private_key.public_key()
-    save_private_key(private_key, "private_key.pem")
     return private_key, public_key
 
 
-def save_private_key(private_key, filename):
-    with open(filename, "wb") as keyfile:
-        keyfile.write(
-            private_key.private_bytes(
-                encoding=serialization.Encoding.PEM,
-                format=serialization.PrivateFormat.PKCS8,
-                encryption_algorithm=serialization.NoEncryption(),
-            )
-        )
-
-
-def load_private_key(filename):
-    with open(filename, "rb") as keyfile:
-        return serialization.load_pem_private_key(
-            keyfile.read(),
-            password=None,
-        )
+def load_private_key(key_bytes):
+    return serialization.load_pem_private_key(
+        key_bytes,
+        password=None,
+    )
 
 
 def save_public_key(public_key, filename):

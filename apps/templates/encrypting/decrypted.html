@@ -8,18 +8,9 @@
 
 {% block content %}
 <body>
-    <h1>Розшифроване повідомлення</h1>
-    <form method="post" action="{% url 'decrypt' %}">
-        {% csrf_token %}
-        <label for="encrypted_message">Зашифроване повідомлення:</label><br>
-        <textarea id="encrypted_message" name="encrypted_message" rows="4" cols="50">{{ encrypted_message }}</textarea><br><br>
-        <label for="decryption_key">Ключ для розшифрування:</label><br>
-        <input type="text" id="decryption_key" name="decryption_key"><br><br>
-        <input type="submit" value="Розшифрувати повідомлення">
-    </form>
     {% if decrypted_message %}
         <p><strong>Розшифроване повідомлення:</strong> {{ decrypted_message }}</p>
     {% endif %}
-    <p><a href="{% url 'encrypt' %}">Перейти до шифрування</a></p>
+    <p><a href="{% url 'encrypting:encrypt' %}">Перейти до шифрування</a></p>
 </body>
 {% endblock %}

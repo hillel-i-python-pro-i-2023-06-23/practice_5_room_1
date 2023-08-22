@@ -69,6 +69,7 @@ pre-commit-run-all:
 migrations:
 	@python manage.py makemigrations
 
+
 .PHONY: migrate
 # Migrate
 migrate:
